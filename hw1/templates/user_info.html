@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>장고 연습생: {{ name }} 정보</title>
+    <style>
+        body {
+            font-family: 'Apple SD Gothic Neo', 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f0f0f0, #d4f5e9);
+            color: #2c3e50;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 60px 0 20px;
+            font-size: 2.5em;
+            color: #2e7d32;
+            text-shadow: 1px 1px 1px rgba(128, 128, 128, 0.2);
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #a5d6a7;
+            margin: 0 auto 30px auto;
+            width: 80%;
+        }
+
+        table {
+            margin: 40px auto;
+            border-collapse: collapse;
+            width: 70%;
+            background: #ffffffcc;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(44, 62, 80, 0.09);
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 18px 22px;
+            text-align: left;
+        }
+
+        th {
+            background: linear-gradient(145deg, #a5d6a7, #cfd8dc);
+            color: #1b5e20;
+            font-size: 1.15em;
+            font-weight: 600;
+            border-bottom: 2px solid #e0e0e0;
+            width: 30%;
+        }
+
+        td {
+            background: #f9fbe7;
+            color: #2c3e50;
+            font-size: 1.08em;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        @media (max-width: 700px) {
+            table {
+                width: 95%;
+            }
+            th, td {
+                padding: 14px 10px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ name }}'s information</h1>
+    <hr />
+    <table>
+        {% for k, v in info_data.items %}
+            <tr>
+                <th>{{ k }}</th>
+                <td>{{ v }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+<!--
+    {
+        '이름': '머용',
+        '나이': 27,
+        '생년월일': '1998-08-29',
+        '취미': '배드민턴',
+        '거주지': '서울특별시 강서구',
+        '개발경력': '2년 2개월'}
+-->
