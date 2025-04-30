@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />"
+    <title>뒤로 미루기! 뒤로 미루기!</title>
+    <style>
+        body {
+            background: #f6f8fc;
+            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            background: linear-gradient(90deg, #ffe066 0%, #ffb347 100%);
+            padding: 32px 0 16px 0;
+            margin-top: 0;
+            font-size: 2.5rem;
+            border-bottom: 2px solid #ffb347;
+            letter-spacing: 2px;
+        }
+        img {
+            display: block;
+            margin: 24px auto 16px auto;
+            border-radius: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            border: 3px solid #ffe066;
+        }
+        ul {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 0;
+            background: #fffbe6;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            list-style: none;
+        }
+        li {
+            padding: 18px 24px;
+            border-bottom: 1px solid #ffe066;
+            font-size: 1.1rem;
+            transition: background 0.2s;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        a {
+            color: #ff8800;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #ff5e00;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>주먹밥쿵야의 할 일 떠안기</h1>
+    <img src="https://mblogthumb-phinf.pstatic.net/MjAyMzA2MjRfMTgy/MDAxNjg3NTk3OTQwMDM3.akypUeu7K637Dtfsi0HrMUe41z7PraCMamDhwMih73sg.B7SS-VPT2BA7VgIcf6Boqnk0wnGY7z1kF_5h02Pj4oQg.JPEG.didu22/1687580283569.jpg?type=w800" alt="주먹밥쿵야" width="300">
+    <ul>
+        {% for todo in todo_list %}
+            <li><a href="{% url 'info' todo.id %}">{{ todo.title }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
