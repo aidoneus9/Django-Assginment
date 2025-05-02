@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>주먹밥쿵야의 할 일 떠안기</title>
+</head>
+<body>
+    <nav>
+        {% if request.user.is_authenticated %}
+            <div>
+                {{ request.user.username }}
+                <form action="{% url 'logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button>로그아웃</button>
+                </form>
+            </div>
+        {% else %}
+            <div>
+                <a href="{% url 'signup' %}">회원가입</a>
+                <a href="{% url 'login' %}">로그인</a>
+            </div>
+        {% endif %}
+    </nav>
+    <div>
+        {% if request.user.is_authenticated %}
+        <h1>{{ request.user.username }}쿵야의 할 일 떠안기</h1>
+        <img src="https://mblogthumb-phinf.pstatic.net/MjAyMzA2MjRfMTgy/MDAxNjg3NTk3OTQwMDM3.akypUeu7K637Dtfsi0HrMUe41z7PraCMamDhwMih73sg.B7SS-VPT2BA7VgIcf6Boqnk0wnGY7z1kF_5h02Pj4oQg.JPEG.didu22/1687580283569.jpg?type=w800" alt="주먹밥쿵야" width="300">
+        <ul>
+            {% for todo in todos %}
+                <li><a href="{% url 'todo_info' todo.id %}">[{{ todo.category }}] {{ todo.title }}</a> - <small>{{ todo.created_at | date:"Y-m-d" }}</small></li>
+            {% endfor %}
+        </ul>
+            {% else %}
+                <h1>회원가입 또는 로그인을 진행해줘</h1>
+            {% endif %}
+    </div>
+</body>
+</html>
